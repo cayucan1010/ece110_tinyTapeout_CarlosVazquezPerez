@@ -32,14 +32,6 @@ module tt_um_lif (
     .spike(uio_out[7])
   );
 
-  lif lif2(
-    .current({uio_out[7], 7'b0000000}), // Use the spike output of lif1 as input to lif2
-    .clk(clk),
-    .reset_n(rst_n),
-    .state(uo_out),
-    .spike(uio_out[7])
-  );
-
 
 
 

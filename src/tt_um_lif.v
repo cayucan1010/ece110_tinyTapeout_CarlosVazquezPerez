@@ -3,7 +3,7 @@
  * SPDX-License-Identifier: Apache-2.0
  */
 
-`default_nettype none
+default_nettype none
 
 module tt_um_lif (
     input  wire [7:0] ui_in,    // Dedicated inputs
@@ -31,11 +31,5 @@ module tt_um_lif (
     .state(uo_out),
     .spike(uio_out[7])
   );
-  lif lif2(
-    .current(ui_in),
-    .clk(clk),
-    .reset_n(rst_n),
-    .state(uo_out),
-    .spike(uio_out[7])
-  );
+
 endmodule

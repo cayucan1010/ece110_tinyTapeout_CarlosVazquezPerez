@@ -1,10 +1,10 @@
-'default_nettype none
+`default_nettype none
 module lif(
     input wire [7:0] current,
     input wire       clk,
     input wire       reset_n,
     output reg [7:0] state,
-    output wire      spike,
+    output wire      spike
 )
     wire [7:0] next_state;
     reg [7:0] threshold;

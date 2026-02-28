@@ -19,7 +19,7 @@ module lif(
     end
     
     //next state logic
-    assign next_state = current + (state >> 1);
+    assign next_state = current + (spike ? 0 : (state >> 1));
 
     ///spike logic
     assign spike = (state >= threshold);

@@ -31,12 +31,7 @@ The GitHub action will automatically build the ASIC files using [LibreLane](http
 - [Join the community](https://tinytapeout.com/discord)
 - [Build your design locally](https://www.tinytapeout.com/guides/local-hardening/)
 
-## What next?
+## My readme
+This project, created by Carlos Vazquez Perez following Professor Eshraghian's lectures, implements a simple Leaky Integrate-and-Fire (LIF) neuron in Verilog on a single Tiny Tapeout tile. Each clock cycle, the neuron accumulates an 8-bit input current supplied through pins `ui[0:7]` while its internal membrane state decays by half via a right bit-shift, mimicking biological charge leakage. When the membrane state reaches or exceeds a threshold of 200, the neuron fires a spike. The full membrane state is readable at any time through output pins `uo[0:7]`, and the spike signal is exposed on `uio[7]`.
 
-- [Submit your design to the next shuttle](https://app.tinytapeout.com/).
-- Edit [this README](README.md) and explain your design, how it works, and how to test it.
-- Share your project on your social network of choice:
-  - LinkedIn [#tinytapeout](https://www.linkedin.com/search/results/content/?keywords=%23tinytapeout) [@TinyTapeout](https://www.linkedin.com/company/100708654/)
-  - Mastodon [#tinytapeout](https://chaos.social/tags/tinytapeout) [@matthewvenn](https://chaos.social/@matthewvenn)
-  - X (formerly Twitter) [#tinytapeout](https://twitter.com/hashtag/tinytapeout) [@tinytapeout](https://twitter.com/tinytapeout)
-  - Bluesky [@tinytapeout.com](https://bsky.app/profile/tinytapeout.com)
+The cocotb Python testbench verifies the design by resetting the neuron, feeding it a sustained current of 200 on the input pins, and confirming after enough clock cycles that the spike output is high (`uio_out == 128`, meaning bit 7 is set). The design is split across two source files, `tt_um_lif.v` and `lif.v`, where the former is the Tiny Tapeout wrapper and the latter contains the core neuron logic.
